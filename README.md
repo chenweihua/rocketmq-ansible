@@ -1,4 +1,4 @@
-RocketMq Ansible
+RocketMQ Ansible
 =========
 
 Requirements
@@ -20,13 +20,13 @@ examples for nameserver and broker
       vars:
         - rocketmq_nameserver_list: 192.168.19.13:9876;192.168.19.14:9876
       roles:
-        - {role: "rocketmq", rocket_type: "nameserver"}
-        - {role: "rocketmq", rocket_type: "broker",
+        - {role: "rocketmq-ansible", rocket_type: "nameserver"}
+        - {role: "rocketmq-ansible", rocket_type: "broker",
             rocketmq_broker_name: "brokerB",
             rocketmq_broker_id: 3,
             rocketmq_role: ASYNC_MASTER
             }
-        - {role: "rocketmq", rocket_type: "broker",
+        - {role: "rocketmq-ansible", rocket_type: "broker",
             rocketmq_broker_name: "brokerB",
             rocketmq_broker_id: 4,
             rocketmq_role: SLAVE
