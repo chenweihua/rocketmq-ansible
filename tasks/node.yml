@@ -1,0 +1,35 @@
+---
+- name: conf node config
+  template:
+    src: rocketmq-node.conf
+    dest: "{{rocketmq_node_conf}}"
+    owner: "{{rocketmq_user}}"
+    group: "{{rocketmq_group}}"
+    mode: "0655"
+  tags:
+    - rocketmq
+
+- name: "template rocketmq {{rocketmq_node_service_name}} service"
+  become: yes
+  template:
+    src: "rocketmq-node.service"
+    dest: "/etc/systemd/system/{{rocketmq_node_service_name}}.service"
+    force: true
+    owner: root
+    group: root
+    mode: "0755"
+  tags:
+    - rocketmq
+
+- name: reload systemd
+  command: "systemctl daemon-reload"
+  become: true
+  tags:
+    - rocketmq
+
+- name: restarted service
+  service:
+    name: "{{rocketmq_node_service_name}}"
+    state: restarted  
+  tags:
+    - rocketmq

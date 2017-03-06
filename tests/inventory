@@ -1,0 +1,17 @@
+[rocketmqBrokerMaster1]
+192.168.19.11
+
+[rocketmqBrokerMaster2]
+192.168.19.12
+
+[rocketmqBrokerSlave1]
+192.168.19.15
+
+[rocketmqBrokerSlave2]
+192.168.19.16
+
+[rocketmqNameServer1]
+192.168.19.13
+
+[rocketmqNameServer2]
+192.168.19.14

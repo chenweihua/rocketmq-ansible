@@ -1,0 +1,42 @@
+---
+- name: conf nameserver config
+  template:
+    src: rocketmq-nameserver.conf
+    dest: "{{rocketmq_home}}"
+    owner: "{{rocketmq_user}}"
+    group: "{{rocketmq_group}}"
+    mode: "0655"
+  tags:
+    - rocketmq
+
+- name: template rocketmq nameserver service
+  become: yes
+  template:
+    src: "rocketmq-nameserver.service"
+    dest: "/etc/systemd/system/"
+    force: true
+    owner: root
+    group: root
+    mode: "0755"
+  tags:
+    - rocketmq
+
+
+- name: reload systemd
+  command: "systemctl daemon-reload"
+  become: true
+  tags:
+    - rocketmq
+
+- name: start rocketmq-nameserver service
+  service:
+    name: rocketmq-nameserver  
+    state: restarted  
+  tags:
+    - rocketmq
+
+- name: health check
+  wait_for:
+    host: "{{rocketmq_broker_ip}}"
+    port: "{{rocket_nameserver_port}}"
+    delay: 10

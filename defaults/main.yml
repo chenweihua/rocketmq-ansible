@@ -1,0 +1,36 @@
+---
+JAVA_HOME: "{{JAVA_HOME}}"
+
+rocketmq_group: rocketmq
+rocketmq_user: rocketmq
+
+rocketmq_home: "{{rocketmq_install}}"
+
+rocketmq_logs: "{{rocketmq_home}}/logs"
+
+rocketmq_nameserver_servicename: rocketmq_nameserver
+rocketmq_nameserver_conf: "{{rocketmq_home}}/rocketmq-nameserver.conf"
+rocket_nameserver_port: 9876
+
+rocketmq_nameserver_java_opt: " -server -Xms1g -Xmx1g -Xmn512m -XX:PermSize=128m -XX:MaxPermSize=320m -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:+DisableExplicitGC -XX:-UseParNewGC -verbose:gc -Xloggc:/dev/shm/rmq_srv_gc.log -XX:+PrintGCDetails -XX:-OmitStackTraceInFastThrow -XX:-UseLargePages "
+
+rocketmq_broker_java_opt: "-server -Xms1g -Xmx1g -Xmn512m -XX:PermSize=128m -XX:MaxPermSize=320m -XX:+UseG1GC -XX:G1HeapRegionSize=16m -XX:G1ReservePercent=25 -XX:InitiatingHeapOccupancyPercent=30 -XX:SoftRefLRUPolicyMSPerMB=0 -XX:SurvivorRatio=8 -XX:+DisableExplicitGC -verbose:gc -Xloggc:/dev/shm/mq_gc_%p.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime -XX:+PrintAdaptiveSizePolicy -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=30m -XX:-OmitStackTraceInFastThrow -XX:+AlwaysPreTouch -XX:MaxDirectMemorySize=15g -XX:-UseLargePages -XX:-UseBiasedLocking"
+
+rocketmq_node_service_name: broker
+rocketmq_node_conf: "{{rocketmq_home}}/rocketmq-node.conf"
+
+#rocket_type: nameserver
+rocket_type: broker  
+
+#node config
+brokerClusterName: defaultCluster
+broker_cluster_name: defaultCluster
+rocketmq_broker_name: broker
+rocketmq_broker_id: 0
+rocketmq_delete_when: "04"
+rocketmq_file_reserved_time: 48
+rocketmq_role: ASYNC_MASTER
+rocketmq_flush_disk_type: ASYNC_FLUSH
+rocketmq_nameserver_list: ""
+rocketmq_broker_ip: "{{ip}}"
+

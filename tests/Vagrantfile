@@ -1,0 +1,88 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+
+  machine_box = "u16"
+  #machine_box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
+
+  config.vm.define "rocketmqNode1" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode1"
+    machine.vm.network "private_network", ip: "192.168.19.11"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode1"
+        node.memory = 1024
+        node.cpus = 2
+    end
+   end
+
+
+  config.vm.define "rocketmqNode2" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode2"
+    machine.vm.network "private_network", ip: "192.168.19.12"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode2"
+        node.memory = 2048
+        node.cpus = 2
+    end
+   end
+
+config.vm.define "rocketmqNode3" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode3"
+    machine.vm.network "private_network", ip: "192.168.19.13"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode3"
+        node.memory = 1024
+        node.cpus = 2
+    end
+   end
+
+
+config.vm.define "rocketmqNode4" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode4"
+    machine.vm.network "private_network", ip: "192.168.19.14"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode4"
+        node.memory = 1024
+        node.cpus = 2
+    end
+   end
+
+config.vm.define "rocketmqNode5" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode5"
+    machine.vm.network "private_network", ip: "192.168.19.15"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode5"
+        node.memory = 1024
+        node.cpus = 2
+    end
+   end
+
+config.vm.define "rocketmqNode6" do |machine|
+    machine.vm.box = machine_box
+    #machine.vm.box_url = machine_box_url
+    machine.vm.hostname = "rocketmqNode6"
+    machine.vm.network "private_network", ip: "192.168.19.16"
+    machine.vm.provider "virtualbox" do |node|
+        node.name = "rocketmqNode6"
+        node.memory = 1024
+        node.cpus = 2
+    end
+   end
+
+
+end

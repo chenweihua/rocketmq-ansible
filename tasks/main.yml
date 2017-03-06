@@ -1,0 +1,39 @@
+---
+- name: create  user_group
+  group: name={{ rocketmq_group }} state=present
+  tags:
+    - rocketmq
+
+- name: create user
+  user: name={{ rocketmq_user }}  groups={{ rocketmq_group }} append=yes
+  tags:
+    - rocketmq
+
+- name: make rocketmq home folder
+  file:
+    path: "{{rocketmq_home}}"
+    state: directory
+    owner: "{{rocketmq_user}}"
+    group: "{{rocketmq_group}}"
+  tags:
+    - rocketmq
+
+- name: copy rocketmq 
+  copy: src=apache-rocketmq-all.tar.gz dest=/tmp
+  tags:
+    - rocketmq
+
+- name: unarchive rocketmq.tar
+  unarchive:
+    src: /tmp/apache-rocketmq-all.tar.gz
+    dest: "{{rocketmq_home}}"
+    remote_src: True
+  tags:
+    - rocketmq
+
+- include: ./nameserver.yml
+  when: rocket_type == 'nameserver'  
+
+- include: ./node.yml
+  when: rocket_type == 'broker'  
+
