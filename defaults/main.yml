@@ -4,7 +4,7 @@ JAVA_HOME: "{{JAVA_HOME}}"
 rocketmq_group: rocketmq
 rocketmq_user: rocketmq
 
-rocketmq_home: "{{rocketmq_install}}"
+rocketmq_home: "/usr/local/rocketmq"
 
 rocketmq_logs: "{{rocketmq_home}}/logs"
 
